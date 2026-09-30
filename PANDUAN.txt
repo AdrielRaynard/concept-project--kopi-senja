@@ -1,0 +1,88 @@
+WEBSITE KOPI SENJA - PANDUAN SINGKAT
+====================================
+
+ISI PAKET
+---------
+index.html        halaman website
+css/style.css     tampilan (warna, font, layout)
+js/config.js      PUSAT PENGATURAN: harga menu, jam buka, WhatsApp, Instagram, foto, peta
+js/main.js        program kecil website (tidak perlu diubah)
+fonts/            font (sudah termasuk, tidak perlu internet untuk memuatnya)
+images/           taruh foto di sini
+favicon.svg       ikon di tab browser
+robots.txt        izin untuk Google
+
+
+1. MEMASANG WEBSITE ONLINE (tanpa biaya hosting)
+------------------------------------------------
+Cara termudah: Netlify Drop
+  a. Buka https://app.netlify.com/drop
+  b. Ekstrak file zip ini, lalu seret SELURUH FOLDER "kopi-senja-website" ke halaman tersebut.
+  c. Dalam beberapa detik kamu mendapat link website. Link itu sudah bisa dibagikan.
+Alternatif: GitHub Pages atau Cloudflare Pages (gratis juga).
+
+Nama domain sendiri (misalnya kopisenja.id) dibeli terpisah di penyedia domain,
+lalu disambungkan lewat menu "Domain" di Netlify. Biayanya per tahun.
+
+
+2. WAJIB DICEK SEBELUM DIUMUMKAN
+--------------------------------
+[ ] Nomor WhatsApp. Nomor di paket ini (+62 812-3456-7890) masih dari brief dan tampak
+    seperti contoh. Ganti di js/config.js (whatsapp dan whatsappDisplay), dan di index.html
+    pada bagian "telephone" (cari kata telephone).
+[ ] Alamat di peta. Buka website, lihat bagian "Temui Kami". Pastikan pin peta pas di kedai.
+    Kalau kurang tepat, di Google Maps cari kedai kamu, lalu salin nama/alamat persisnya ke
+    mapEmbedQuery dan mapsQuery di js/config.js.
+[ ] Akun Instagram: @kopisenja (ubah di js/config.js kalau berbeda).
+[ ] Tes tombol "Chat via WhatsApp" dari HP: pesan otomatis harus sudah terisi.
+[ ] Ganti "GANTI-DOMAIN.com" di index.html dengan alamat website asli (ada 2 tempat, di bagian
+    og:image dan og:url). Ini yang membuat gambar pratinjau muncul saat link dibagikan di
+    WhatsApp/Instagram. Gambarnya sudah ada: images/og-image.jpg.
+
+
+3. MENGGANTI HARGA MENU / JAM BUKA
+----------------------------------
+Buka js/config.js dengan aplikasi teks apa saja (Notepad, TextEdit, VS Code).
+Contoh mengganti harga Americano dari 23.000 ke 25.000:
+
+    { name: "Americano", desc: "Espresso dan air mineral", price: 23000 },
+                                                          ^^^^^^^^^^^^
+    jadi: price: 25000
+
+Tulis angka saja, tanpa titik dan tanpa "Rp". Penulisan "Rp25.000" dibuat otomatis.
+Menambah menu: salin satu baris menu, tempel, lalu ubah isinya. Hati-hati agar tanda kutip
+dan koma tidak terhapus.
+Kalau jam buka berubah, ubah di js/config.js (bagian hours). Sebaiknya ubah juga di index.html
+pada bagian "openingHoursSpecification" (informasi untuk Google).
+Setelah diubah, unggah ulang folder ke Netlify Drop (atau pakai "Deploys" > seret folder lagi).
+
+
+4. MEMASANG FOTO ASLI
+---------------------
+Taruh foto di folder images/ dengan NAMA PERSIS seperti ini. Foto akan otomatis menggantikan
+ilustrasi sementara. Slot yang belum ada fotonya tetap memakai ilustrasi.
+
+  hero.jpg               foto besar di bagian atas (kopi/kedai). Ukuran ideal 1200 x 1440 px (portrait)
+  about.jpg              foto pemilik atau tim. Ideal 1200 x 1500 px (portrait)
+  gallery-interior.jpg   interior kedai. Lebar 1400 px
+  gallery-barista.jpg    barista membuat kopi. Lebar 1000 px
+  gallery-closeup.jpg    close-up kopi (portrait). 1000 x 1400 px
+  gallery-outdoor.jpg    area outdoor. Lebar 1000 px
+  gallery-laptop.jpg     orang bekerja dengan laptop. Lebar 1400 px
+  gallery-talk.jpg       orang ngobrol. Lebar 1400 px
+
+Tips foto dari HP:
+  - Ambil dekat jendela saat sore hari. Cahaya alami membuat hasilnya hangat.
+  - Untuk kopi: foto dari samping atau dari atas, meja dirapikan.
+  - Kecilkan ukuran file sebelum dipasang (target di bawah 300 KB per foto), misalnya lewat
+    https://squoosh.app. Ini membuat website cepat dibuka di HP.
+  - Foto akan dipotong otomatis mengikuti bingkai. Letakkan objek utama di tengah.
+Kalau fotomu berformat lain (misalnya .webp atau .png), ubah nama file di bagian "photos"
+di js/config.js.
+
+
+5. HAL LAIN
+-----------
+- Mengubah warna: css/style.css, bagian paling atas (":root"). Nama warna sudah diberi label.
+- Website ini tidak memakai cookie, database, atau pelacak. Tidak ada popup.
+- Untuk melihat statistik pengunjung, Netlify atau Google Analytics bisa ditambahkan nanti.
